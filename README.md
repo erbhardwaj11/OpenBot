@@ -11,7 +11,7 @@ Each coworker gets a computer of its own: a real browser with its own logins, it
 [![CI](https://github.com/CopilotKit/openbot/actions/workflows/ci.yml/badge.svg)](https://github.com/CopilotKit/openbot/actions/workflows/ci.yml)
 [![security](https://github.com/CopilotKit/openbot/actions/workflows/security_zizmor.yml/badge.svg)](https://github.com/CopilotKit/openbot/actions/workflows/security_zizmor.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-![Alpha](https://img.shields.io/badge/status-alpha-orange.svg)
+![Beta](https://img.shields.io/badge/status-beta-yellow.svg)
 
 [![Trendshift: #3 Repository Of The Day](https://trendshift.io/api/badge/trendshift/repositories/175080/daily)](https://trendshift.io/repositories/175080)
 
@@ -31,7 +31,7 @@ your own machine.
 
 > **A template, not a product.** OpenBot is meant to be cloned and made your own. There is no hosted version to sign up for, and nothing here is published as a package to depend on: every workspace in this repository is private. You take the repository, replace the example tenant package under `examples/` with your own coworkers, channels and skills, and run it. Everything below describes a starting point, not a finished thing somebody operates for you.
 
-> **Alpha, and under active development.** OpenBot is early. Expect rough edges and bugs, and expect things to move. Issues and pull requests are welcome.
+> **Beta, and under active development.** OpenBot is early. Expect rough edges and bugs, and expect things to move. Issues and pull requests are welcome.
 
 > **Runs on your machine.** Everything below is written for a laptop. `.env.example` carries `OPENBOT_SINGLE_USER=true`, which admits every request as one administrator, so a fresh clone reaches the product without registering an OAuth client first. [Sign-in](#sign-in) turns that off, and is required before anybody else can reach the deployment.
 
@@ -193,14 +193,14 @@ Leave `EMBEDDED_POSTGRES` off and set `DATABASE_URL` to point at a database you 
 | `/bots/:id/reach`           | Continue a conversation with the Bot in Slack, Microsoft Teams, or by text message. |
 | `/bots/:id/memory`          | Which connected apps feed the Bot facts, and its background research. |
 | `/bots/:id/approvals`       | What the Bot may do without asking you first.                      |
-| `/skills`                   | Create and enable personal skills.                                 |
+| `/connections`              | Connect your apps so your Bots can work with them.                 |
+| `/capabilities/skills`      | Create and enable personal skills.                                 |
+| `/capabilities/memory`      | What your Bots remember about you, and facts you tell them.        |
 | `/routines`                 | See the routines that are standing, and stop one.                  |
 | `/settings`                 | User preferences.                                                  |
-| `/settings/connected-accounts` | Connect your apps so your Bots can work with them.              |
 | `/settings/passwords`       | Logins you saved when signing a Bot in to a website.               |
 | `/settings/notifications`   | Where updates go, your devices, and recent deliveries.             |
 | `/settings/approvals`       | Whether your Bots ask before acting, and rules for every Bot.      |
-| `/settings/memory`          | What your Bots remember about you, and facts you tell them.        |
 | `/admin/credentials`        | Store write-only encrypted credentials.                            |
 | `/admin/approvals`          | Team approval settings, team rules, and shared account requests.   |
 | `/admin/computers`          | View, stop, and reset Bot computers.                               |

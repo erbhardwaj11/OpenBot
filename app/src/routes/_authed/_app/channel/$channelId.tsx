@@ -7,6 +7,7 @@ import { AgentProfile } from "@/components/agents/agent-profile";
 import { BotPausedBanner } from "@/components/bot-profile/pause-banner";
 import { ChannelAvatar } from "@/components/channels/avatar";
 import { ChannelChat } from "@/components/channels/channel-chat";
+import { ConversationActions } from "@/components/channels/conversation-actions";
 import { ComputerChatControls } from "@/components/computer/computer-controls";
 import { ComputerViewPanel } from "@/components/computer/computer-panel";
 import { useAutoWatchScreen } from "@/components/computer/use-auto-watch-screen";
@@ -89,7 +90,18 @@ function RouteComponent() {
           // Manual watch remains active even when there is no current browser action.
           <ComputerViewPanel agentId={agentId} name={channel?.data?.name} />
         ) : (
-          <AgentProfile agentId={agentId} />
+          <AgentProfile
+            agentId={agentId}
+            footer={
+              channel.data ? (
+                <ConversationActions
+                  channelId={channelId}
+                  leave={() => navigate({ to: "/" })}
+                  name={channel.data.name}
+                />
+              ) : null
+            }
+          />
         )
       }
     >
@@ -141,7 +153,7 @@ function RouteComponent() {
               onOpenChange={(open) => show(open ? "watch" : null)}
             />
             <Button
-              aria-label="Channel coworker"
+              aria-label="This conversation's Bot"
               aria-pressed={isSettingsOpen}
               className={isSettingsOpen ? "bg-foreground/5" : undefined}
               disabled={agentId === undefined}
@@ -184,7 +196,7 @@ function ChannelBody({
   if (hasError || !channel) {
     return (
       <p className="p-8 text-sm text-destructive" role="alert">
-        Could not load this channel.
+        Couldn't load this conversation. Reload the page.
       </p>
     );
   }
